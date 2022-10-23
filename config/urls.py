@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from authapp.views import CustomUserAPIView
+from users.views import UsersAPIVieW
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/userList/', CustomUserAPIView.as_view()),
+    path('api/v1/userslist/', UsersAPIVieW.as_view()),
+    
 ]
