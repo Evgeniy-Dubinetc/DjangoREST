@@ -1,7 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import UsersList from './components/Users.js'
+import UsersList from './components/Users.js';
+import MenuList from './components/Menu.js';
+import Footer from './components/Footer.js';
 import axios from 'axios'
 
 
@@ -10,7 +12,8 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      'users': []
+      'users': [],
+      'tabs': []
     }
   }
   
@@ -24,6 +27,15 @@ class App extends React.Component {
           }
         )
       }).catch(error => console.log(error))
+  
+        const tabs = [
+          {
+          'user': 'user',
+          'project': 'project',
+          'todo': 'todo'
+          }
+        ]
+          this.setState({ 'tabs': tabs })
   }
 
   /*
@@ -54,7 +66,9 @@ class App extends React.Component {
   render () {
     return (
       <div>
+        <MenuList tabs={this.state.tabs} />
         <UsersList users={this.state.users} />
+        <Footer />
       </div>
     )
   }
