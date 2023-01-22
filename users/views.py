@@ -3,8 +3,8 @@
 # from .serializers import UsersSerializer
 
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.generics import ListAPIView, RetrieveAPIView, UpdateAPIView
 from .serializers import UsersModelSerializer
-
 from .models import Users
 
 
@@ -13,11 +13,7 @@ class UsersModelViewSet(ModelViewSet):
     serializer_class = UsersModelSerializer
 
 
-
-
-'''
-class UsersAPIVieW(generics.ListAPIView):
+class UserAPIVieW(ListAPIView, RetrieveAPIView, UpdateAPIView):
+    #    renderer_classes = [JSONRenderer]
     queryset = Users.objects.all()
-    serializer_class = UsersSerializer
-'''
-
+    serializer_class = UsersModelSerializer
