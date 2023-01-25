@@ -16,3 +16,4 @@ class TODO(models.Model):
     time_update = models.DateTimeField(auto_now=True, verbose_name="Updated")
     user_name = models.ForeignKey(Users, on_delete=models.CASCADE)
     activate = models.BooleanField(("active"), default=True)
+

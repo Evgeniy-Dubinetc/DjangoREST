@@ -21,6 +21,8 @@ from users.views import UsersModelViewSet
 from todo.views import ProjectModelViewSet, TODOModelViewSet
 from users.views import UserAPIVieW 
 
+
+
 router = DefaultRouter()
 
 router.register('users', UsersModelViewSet)
@@ -36,4 +38,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls)),
 #    path('userapi/', UserAPIVieW.as_view({'get': 'list'})),
+
 ]
