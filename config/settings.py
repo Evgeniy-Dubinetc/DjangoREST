@@ -44,13 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-#    'django_filters',
+    'django_filters',
     'users.apps.UsersConfig',
     'todo.apps.TodoConfig',
     'corsheaders',
-    'django_filters',
-    
+    'frontend',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -141,7 +141,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',        
-    #    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'  # добавил на 5 уроке
     ],
     
     'DEFAULT_RENDERER_CLASSES': [

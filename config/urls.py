@@ -28,7 +28,7 @@ router = DefaultRouter()
 router.register('users', UsersModelViewSet)
 router.register('project', ProjectModelViewSet)
 router.register('todo', TODOModelViewSet)
-router.register('user', UserAPIVieW, basename='user')
+router.register('users', UserAPIVieW, basename='users')
 
 
 
