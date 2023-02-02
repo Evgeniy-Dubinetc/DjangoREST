@@ -1,12 +1,13 @@
 import React from 'react';
 /* import logo from './logo.svg'; */
 import './App.css';
-import UsersList from './components/Users.js';
+import UsersList from './components/Users';
 import ProjectsList from './components/Project';
 import TodoList from './components/Todo';
-import MenuList from './components/Menu.js';
+import AuthorTodoList from './components/AuthorTodo';
+import MenuList from './components/Menu';
 /*import Footer from './components/Footer.js';*/
-import {HashRouter, Route, Link, Switch, Redirect} from 'react-router-dom'
+import {BrowserRouter, Route, Link, Switch, Redirect} from 'react-router-dom'
 /* import axios from 'axios' */
 
 /*
@@ -142,7 +143,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <HashRouter>
+        <BrowserRouter>
           <nav>
             <ul>
               <li>
@@ -164,10 +165,11 @@ class App extends React.Component {
             <Route exact path='/menu' component={() => <MenuList items={this.state.menu} />} />            
             <Route exact path='/projects' component={() => <ProjectsList items={this.state.projects} />} />
             <Route exact path='/todo' component={() => <TodoList items={this.state.todo} />} />
+            <Route path="/users/:user_name"> <AuthorTodoList items={this.state.todo} /> </Route>
             <Redirect from='/users' to='/' />
             <Route component={NotFound404} />
           </Switch>
-        </HashRouter>
+        </BrowserRouter>
       </div>
     )
   }
