@@ -2,8 +2,11 @@ import React from 'react';
 /* import logo from './logo.svg'; */
 import './App.css';
 import UsersList from './components/Users.js';
+import ProjectsList from './components/Project';
+import TodoList from './components/Todo';
 import MenuList from './components/Menu.js';
-import Footer from './components/Footer.js';
+/*import Footer from './components/Footer.js';*/
+import {HashRouter, Route, Link, Switch, Redirect} from 'react-router-dom'
 /* import axios from 'axios' */
 
 /*
@@ -38,7 +41,16 @@ class App extends React.Component {
           this.setState({ 'tabs': tabs })
   }
 */
-  
+
+const NotFound404 = ({ location }) => {
+  return (
+    <div>
+      <h1>Страница по адресу '{location.pathname}' не найдена</h1>
+    </div>
+  )
+}
+
+
 class App extends React.Component {
   
   constructor(props) {
@@ -57,7 +69,7 @@ class App extends React.Component {
         'email': 'rrf111@mail.ru',
       },
     ]
-    const project = [
+    const projects = [
       {
         'project_name': 'ships_in_space',
         'repo_link': 'github_link',
@@ -101,7 +113,7 @@ class App extends React.Component {
     ]
     this.state = {
       'users': users,
-      'project': project,
+      'projects': projects,
       'todo': todo,
       'menu': menu,
     }
@@ -115,7 +127,7 @@ class App extends React.Component {
   }
 
   
-  
+  /*
   render () {
     return (
       <div>
@@ -125,7 +137,41 @@ class App extends React.Component {
         <Footer /> 
       </div>
     )
+  } */
+
+  render() {
+    return (
+      <div className="App">
+        <HashRouter>
+          <nav>
+            <ul>
+              <li>
+                <Link to='/'>Menu</Link>
+              </li>
+              <li>
+                <Link to='/users'>Users</Link>
+              </li>
+              <li>
+                <Link to='/projects'>Projects</Link>
+              </li>
+              <li>
+                <Link to='/todo'>Todo</Link>
+              </li>
+            </ul>
+          </nav>
+          <Switch>
+            <Route exact path='/' component={() => <UsersList items={this.state.users} />} />
+            <Route exact path='/menu' component={() => <MenuList items={this.state.menu} />} />            
+            <Route exact path='/projects' component={() => <ProjectsList items={this.state.projects} />} />
+            <Route exact path='/todo' component={() => <TodoList items={this.state.todo} />} />
+            <Redirect from='/users' to='/' />
+            <Route component={NotFound404} />
+          </Switch>
+        </HashRouter>
+      </div>
+    )
   }
+
 }
   
 export default App;
