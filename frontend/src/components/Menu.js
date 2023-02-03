@@ -18,17 +18,17 @@ const MenuItem = ({ item }) => {
 }
 
 const MenuList = ({ tabs }) => {
-    console.log(tabs)
+    /*console.log(tabs) */
     return (
         <table>
             <th>
-                User
+                USER
             </th>
             <th>
-                Project
+                PROJECT
             </th>
             <th>
-                Todo
+                TODO
             </th>
             {tabs.map((item_) => <MenuItem item={item_} />)}
         </table>
