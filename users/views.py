@@ -21,20 +21,20 @@ class UsersModelViewSet(ModelViewSet):
   #  serializer_class = UsersModelSerializer
 
 
-class UserAPIVieW(ViewSet):
+#class UserAPIVieW(ViewSet):
         
     
-    def list(self, request):
-        queryset = Users.objects.all()    
-        serializer = UsersModelSerializer(queryset, many=True)
-        return Response(serializer.data)
+#    def list(self, request):
+#        queryset = Users.objects.all()    
+#        serializer = UsersModelSerializer(queryset, many=True)
+#        return Response(serializer.data)
 
-    def retraive(self, request):
-        queryset = Users.objects.all()    
-        serializer = UsersModelSerializer(queryset, many=True)
-        return Response(serializer.data)
+#    def retraive(self, request):
+#        queryset = Users.objects.all()    
+#        serializer = UsersModelSerializer(queryset, many=True)
+#        return Response(serializer.data)
 
-    def update(self, request):
-        queryset = Users.objects.all()    
-        serializer = UsersModelSerializer(queryset, many=True)
-        return Response(serializer.data)
+#    def update(self, request):
+#        queryset = Users.objects.all()    
+#        serializer = UsersModelSerializer(queryset, many=True)
+#        return Response(serializer.data)
