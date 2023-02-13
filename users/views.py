@@ -8,10 +8,12 @@ from .serializers import UsersModelSerializer
 from .models import Users
 # from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 
 class UsersModelViewSet(ModelViewSet):
     queryset = Users.objects.all()
+    permission_classes = [IsAuthenticated]
     serializer_class = UsersModelSerializer
 
 

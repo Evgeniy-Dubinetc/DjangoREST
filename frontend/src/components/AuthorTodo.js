@@ -30,7 +30,7 @@ const TodoItem = ({item}) => {
 
 const AuthorTodoList = ({items}) => {
     let { user_name } = useParams();
-    let filtered_items = items.filter((item) => item.users.user_name === user_name)
+    let filtered_items = items.filter((item) => item.users.user_name == user_name)
     return (
         <table>
             <tr>
