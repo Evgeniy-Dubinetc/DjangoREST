@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'todo.apps.TodoConfig',
     'corsheaders',
     'frontend',
+    'rest_framework.authtoken',
+
 
 ]
 
@@ -143,9 +145,16 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',        
 
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'  # добавил на 5 уроке
 
-    #    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+
+#        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'  # добавил на 5 уроке
+        'rest_framework.permissions.IsAutenticated'
+    ],
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
 
     ],
     
