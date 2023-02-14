@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'frontend',
     'rest_framework.authtoken',
 
+
 ]
 
 
@@ -143,10 +144,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',        
-
 #        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'  # добавил на 5 уроке
         'rest_framework.permissions.IsAutenticated'
-
     ],
 
     'DEFAULT_AUTHENTICATION_CLASSES': [

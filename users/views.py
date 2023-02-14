@@ -21,9 +21,10 @@ class UsersModelViewSet(ModelViewSet):
    # queryset = Users.objects.all()
   #  serializer_class = UsersModelSerializer
 
-#class UserAPIVieW(ViewSet):
-    
 
+#class UserAPIVieW(ViewSet):
+        
+    
 #    def list(self, request):
 #        queryset = Users.objects.all()    
 #        serializer = UsersModelSerializer(queryset, many=True)
