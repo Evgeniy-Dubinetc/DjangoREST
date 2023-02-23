@@ -1,8 +1,8 @@
 # from django.shortcuts import render
-# from .serializers import UsersSerializer
+from .serializers import UsersSerializer
 
-#from rest_framework import viewsets
-#from rest_framework.viewsets import ModelViewSet, ViewSet
+from rest_framework import viewsets
+from rest_framework.viewsets import ModelViewSet, ViewSet
 from rest_framework.generics import ListAPIView, RetrieveAPIView, UpdateAPIView
 from rest_framework import generics
 #from .serializers import UsersModelSerializer, UsersModelSerializer_2
@@ -14,20 +14,20 @@ from .models import Users
 # from rest_framework.permissions import IsAuthenticated
 
 
-#class UsersViewSet(viewsets.ModelViewSet):   
-#    queryset = Users.objects.all()
-#    permission_classes = [IsAuthenticated]
-#    serializer_class = UsersSerializer
-
-
-class UserListAPIView(generics.ListAPIView):    
+class UsersModelViewSet(viewsets.ModelViewSet):   
     queryset = Users.objects.all()
+#    permission_classes = [IsAuthenticated]
     serializer_class = UsersSerializer
 
-    def get_serializer_class(self):
-      if self.request.version == '1':
-        return UsersSerializer
-      return UsersSerializer_2
+
+#class UserListAPIView(generics.ListAPIView):    
+#    queryset = Users.objects.all()
+#    serializer_class = UsersSerializer
+#
+#    def get_serializer_class(self):
+#      if self.request.version == '1':
+#        return UsersSerializer
+#      return UsersSerializer_2
 
 
 # class UserAPIVieW(ListAPIView, RetrieveAPIView, UpdateAPIView):
@@ -53,3 +53,14 @@ class UserListAPIView(generics.ListAPIView):
 #        queryset = Users.objects.all()    
 #        serializer = UsersModelSerializer(queryset, many=True)
 #        return Response(serializer.data)
+#
+# 
+# 
+# 
+# 
+# 
+#    С помощью GraphQL создать схему, которая позволит одновременно получать ToDo, 
+# проекты и пользователей, связанных с проектом
+#
+#
+#

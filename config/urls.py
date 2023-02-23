@@ -20,11 +20,12 @@ from rest_framework.routers import DefaultRouter
 #from users.views import UsersViewSet 
 from todo.views import ProjectModelViewSet, TODOModelViewSet
 from rest_framework.authtoken.views import obtain_auth_token
-from users.urls import UserListAPIView 
+#from users.urls import UserListAPIView 
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
-# from .urls import UsersModelViewSet
+from graphene_django.views import GraphQLView
+from users.views import UsersModelViewSet
 
 
 schema_view = get_schema_view(
@@ -45,7 +46,7 @@ router = DefaultRouter()
 # router.register('users', UsersViewSet)
 router.register('project', ProjectModelViewSet)
 router.register('todo', TODOModelViewSet)
-# router.register('users', UsersModelViewSet)
+router.register('users', UsersModelViewSet)
 # router.register('users', UserListAPIView, basename='users')
 
 
@@ -54,8 +55,10 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls)),
     path('api-token-auth/', obtain_auth_token),
+    path("graphql/", GraphQLView.as_view(graphiql=True)),
+    path('users/', UsersModelViewSet.as_view({'get': 'list'})),
 # #   path('userapi/', UserAPIVieW.as_view({'get': 'list'})),
-    path('api/users', include('users.urls', namespace='2')),
+#    path('api/users', include('users.urls', namespace='2')),
     
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
